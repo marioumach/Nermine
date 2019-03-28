@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>Ajout Plat</h1>
+<div mat-dialog-content fxLayout="row"fxLayoutAlign="space-between space-between">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Plat</mat-label>
+      <input matInput [(ngModel)]="Plat">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>categorie</mat-label>
+      <input matInput [(ngModel)]="categorie">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>famille</mat-label>
+      <input matInput [(ngModel)]="famille">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>sous famille</mat-label>
+      <input matInput [(ngModel)]="sfamille">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Nbr Parts</mat-label>
+      <input matInput type="number" maxlength="2" [(ngModel)]="nbParts">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>durée Preparation</mat-label>
+      <input matInput [(ngModel)]="duree">
+    </mat-form-field>
+  </div>
+  <div >
+      <button class="btn-modal" mat-stroked-button class="btn-primary" >Enregistrer</button>
+      <button  class="btn-modal"mat-stroked-button class="btn-primary" >Annuler</button>
+
+  </div>
+</div>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Ingredients</ng-template>
+        
+        <div>
+          <button mat-stroked-button class="btn-primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Sous Recette</ng-template>
+       
+        <div>
+          <button mat-stroked-button class="btn-primary" matStepperPrevious>Back</button>
+          <button mat-stroked-button class="btn-primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Etapes</ng-template>
+          
+          <div>
+            <button mat-stroked-button class="btn-primary" matStepperPrevious>Back</button>
+            <button mat-stroked-button class="btn-primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Image</ng-template>
+      <div>
+        <button mat-stroked-button class="btn-primary" matStepperPrevious>Back</button>
+        <button mat-stroked-button class="btn-primary" (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
